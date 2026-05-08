@@ -1,12 +1,29 @@
-//
-// Created by yousu on 5/6/2026.
-//
-
 #ifndef UNTITLED2_CUSTOMER_H
 #define UNTITLED2_CUSTOMER_H
 
+#include "Person.h"
+using namespace std;
 
-class Customer {
+
+class Customer : public Person {
+private:
+    string licenseNumber;
+    bool hasActiveRental;
+
+public:
+    //Constructor
+    Customer(string name , string id , string phoneNumber , string licenseNumber);
+
+    // Getters
+    string getLicenseNumber();
+    bool gethasActiveRental();
+
+    //Setters
+    void sethasActiveRental(bool status);
+
+    //Display
+    void displayCustomer();
+
 };
 
 

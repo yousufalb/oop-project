@@ -1,13 +1,14 @@
-//
-// Created by yousu on 5/6/2026.
-//
 
 #ifndef UNTITLED2_SEDAN_H
 #define UNTITLED2_SEDAN_H
 
+#include "Car.h"
+using namespace std;
 
-class Sedan {
+class Sedan : public Car {
+public:
+    Sedan(string brand, string model, int year);
+    double calculatePrice(int days);
 };
-
 
 #endif //UNTITLED2_SEDAN_H

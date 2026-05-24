@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+int Car::carCount = 0;
+
 Car::Car(string b, string m, int y, double price, string plate) {
     brand = b;
     model = m;

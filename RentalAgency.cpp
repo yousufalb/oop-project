@@ -100,15 +100,15 @@ void RentalAgency::rentCar() {
         }
         int sDay , sMonth , sYear , sHour , sMin;
         cout << "\nEnter start date (day month year):";
-        cin >> sDay , sMonth , sYear;
+        cin >> sDay >> sMonth >> sYear;
         cout << "\nEnter start time (hour minute):";
-        cin >> sHour , sMin;
+        cin >> sHour >> sMin;
 
         int eDay , eMonth, eYear , eHour , eMin;
         cout << "Enter expected return date (day month year)";
-        cin >> eDay , eMonth , eYear;
+        cin >> eDay >> eMonth >> eYear;
         cout << "Enter expected return time (hour minute)";
-        cin >> eHour , eMin;
+        cin >> eHour >> eMin;
 
         Date_Time startDT(sDay , sMonth , sYear , sHour , sMin);
         Date_Time expectedDT(eDay , eMonth , eYear , eHour , eMin);
@@ -151,9 +151,9 @@ void RentalAgency::returnCar() {
 
         int rDay , rMonth , rYear , rHour , rMin;
         cout << "\nEnter return date (day month year):";
-        cin >> rDay , rMonth , rYear;
+        cin >> rDay >> rMonth >> rYear;
         cout << "Enter return time (hour minute)";
-        cin >> rHour , rMin;
+        cin >> rHour >> rMin;
 
         Date_Time returnDT(rDay , rMonth , rYear , rHour , rMin);
 

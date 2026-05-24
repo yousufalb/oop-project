@@ -41,7 +41,16 @@ void Date_Time::display() {
          << getMonth() <<"/"
          << getYear() <<" "
          << getHour() <<":"
-         << set2(2) << setfill('0') << getMinute();
+         << setw(2) << setfill('0') << getMinute();
 
+}
+
+string Date_Time::toString() {
+    ostringstream oss;
+    oss <<  getDay() <<"/"
+        << getMonth() <<"/"
+        << getYear() <<" "
+        << getHour() <<":"
+        << setw(2) << setfill('0') << getMinute();
     return oss.str();
 }

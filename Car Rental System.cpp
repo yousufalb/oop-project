@@ -1,18 +1,38 @@
+#include "RentalAgency.h"
 #include <iostream>
-
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+using namespace std;
 
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
+    RentalAgency agency;
+    int choice;
 
-    const auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    do {
+        cout<<"\n=== Car Rental System ===" << endl;
+        cout<<"1. Add a Car"<<endl;
+        cout<<"2. Register a Customer"<<endl;
+        cout<<"3. Rent a Car"<<endl;
+        cout<<"4. Return a Car"<<endl;
+        cout<<"5. Make a Payment"<<endl;
+        cout<<"6. View All Cars"<<endl;
+        cout<<"7. View All Customers"<<endl;
+        cout<<"8. View All Rentals"<<endl;
+        cout<<"0. Exit"<<endl;
+        cout<<"Enter your choice: ";
+        cin>>choice;
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
+        switch(choice) {
+            case 1: agency.addCar(); break;
+            case 2: agency.addCustomer(); break;
+            case 3: agency.rentCar(); break;
+            case 4: agency.returnCar(); break;
+            case 5: agency.makePayment(); break;
+            case 6: agency.displayCars(); break;
+            case 7: agency.displayCustomers(); break;
+            case 8: agency.displayRentals(); break;
+            case 0: cout << "\n Goodbye!" << endl; break;
+            default: cout << "Invalid choice!" << endl; break;
+        }
+    }while(choice != 0);
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

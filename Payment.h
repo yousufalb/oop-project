@@ -10,20 +10,19 @@ private:
     double amount;
     string paymentType;
     bool isPaid;
-    int renatalID;
+    int rentalID;
 
 public:
-    Payment(int rentalID, double amount);
+    Payment(int rentalID, double amt);
+
     double getAmount();
     string getPaymentType();
     bool getIsPaid();
     int getRentalID();
 
-    void setpaymentType(string paymentType);
+    void setpaymentType(string type);
     void processPayment();
     void displayInvoice();
-
-
 };
 
 

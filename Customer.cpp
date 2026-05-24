@@ -12,6 +12,7 @@ string Customer::getLicenseNumber() {return licenseNumber;}
 bool Customer::gethasActiveRental() {return hasActiveRental;}
 
 void Customer::sethasActiveRental(bool status) {hasActiveRental = status;}
+
 void Customer::displayCustomer() {
     displayPerson(); // It calls the person display
     cout <<"License Number:" <<licenseNumber <<endl;

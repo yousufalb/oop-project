@@ -39,7 +39,7 @@ void RentalAgency::addCar() {
         } else {
             throw invalid_argument("Invalid car type selected!");
         }
-        cout  << "\nCar added! Car ID: " cars.back()->getCarId() << endl;
+        cout  << "\nCar added! Car ID: " << cars.back()->getCarId() << endl;
     }catch (invalid_argument &e) {
         cout << "Error:" << e.what() << endl;
     }
@@ -57,19 +57,19 @@ void RentalAgency::addCustomer() {
         if (name.empty() || id.empty() || phone.empty() || license.empty()) {
             throw invalid_argument("All customer fields must be filled!");
         }
-        customer.push_back(newCustomer(name , id , phone , license));
+        customers.push_back(new Customer(name , id , phone , license));
         cout << "\nCustomer registered successfully!" << endl;
     } catch (invalid_argument &e) {
         cout << "Error:" << e.what() << endl;
     }
 }
 
-void RentalAgency::Rentcar() {
+void RentalAgency::rentCar() {
     try {
         if (cars.empty()) {
             throw runtime_error("No cars available in the system!");
         }
-        if (customer.empty()) {
+        if (customers.empty()) {
             throw runtime_error("No customers registered in the system!");
         }
 
@@ -95,7 +95,7 @@ void RentalAgency::Rentcar() {
         if (custChoice < 0 || custChoice >= (int)customers.size()) {
             throw out_of_range("Invalid customer selection!");
         }
-        if (customer[custChoice]->gethasActiveRental() == true) {
+        if (customers[custChoice]->gethasActiveRental() == true) {
             throw runtime_error("This customer already has an active rental!");
         }
         int sDay , sMonth , sYear , sHour , sMin;
@@ -106,14 +106,14 @@ void RentalAgency::Rentcar() {
 
         int eDay , eMonth, eYear , eHour , eMin;
         cout << "Enter expected return date (day month year)";
-        cin >> eday , sMonth , sYear;
+        cin >> eDay , eMonth , eYear;
         cout << "Enter expected return time (hour minute)";
-        cin >> eHour , sMin;
+        cin >> eHour , eMin;
 
-        DateTime startDT(sDay , sMonth , sYear , sHour , sMin);
-        DateTime expectedDT(eday , eMonth , eYear , eHour , eMin);
+        Date_Time startDT(sDay , sMonth , sYear , sHour , sMin);
+        Date_Time expectedDT(eDay , eMonth , eYear , eHour , eMin);
 
-        cars[carChoice]-> setAvailableRental(false);
+        cars[carChoice]->setAvailability(false);
         customers[custChoice]->sethasActiveRental(true);
 
         Rental* rental = new Rental(
@@ -145,7 +145,7 @@ void RentalAgency::returnCar() {
         if (choice < 0 || choice >= (int)rentals.size()) {
             throw out_of_range("Invalid rental selection!");
         }
-        if rentals[choice]->getIsActive() == false {
+        if (rentals[choice]->getIsActive() == false) {
             throw runtime_error("This rental is already closed!");
         }
 
@@ -155,11 +155,11 @@ void RentalAgency::returnCar() {
         cout << "Enter return time (hour minute)";
         cin >> rHour , rMin;
 
-        DateTime returnDT(rDay , rMonth , rYear , rHour , rMin);
+        Date_Time returnDT(rDay , rMonth , rYear , rHour , rMin);
 
         rentals[choice]->returnCar(returnDT);
-        rentals[choice]->getCar()->setAvailablity(true);
-        rentals[choice]->getCustomer()->setHasActiveRental(false);
+        rentals[choice]->getCar()->setAvailability(true);
+        rentals[choice]->getCustomer()->sethasActiveRental(false);
 
         cout << "\nCar rented successfully!" << endl;
         rentals[choice]->displayRental();
@@ -185,7 +185,7 @@ void RentalAgency::makePayment() {
             throw out_of_range("Invalid rental selection!");
         }
         Payment* payment = new Payment(
-            rentals[choice]->getRentalID(),
+            rentals[choice]->getRentalId(),
             rentals[choice]->getTotalCost()
         );
         payment->processPayment();
